@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/reduce/static/js/main.001fb766.chunk.js",
-    "main.js.map": "/reduce/static/js/main.001fb766.chunk.js.map",
+    "main.js": "/reduce/static/js/main.63924772.chunk.js",
+    "main.js.map": "/reduce/static/js/main.63924772.chunk.js.map",
     "runtime-main.js": "/reduce/static/js/runtime-main.b4be74b5.js",
     "runtime-main.js.map": "/reduce/static/js/runtime-main.b4be74b5.js.map",
-    "static/js/2.421ba6ad.chunk.js": "/reduce/static/js/2.421ba6ad.chunk.js",
-    "static/js/2.421ba6ad.chunk.js.map": "/reduce/static/js/2.421ba6ad.chunk.js.map",
+    "static/js/2.3c517059.chunk.js": "/reduce/static/js/2.3c517059.chunk.js",
+    "static/js/2.3c517059.chunk.js.map": "/reduce/static/js/2.3c517059.chunk.js.map",
     "static/js/3.6b4bc732.chunk.js": "/reduce/static/js/3.6b4bc732.chunk.js",
     "static/js/3.6b4bc732.chunk.js.map": "/reduce/static/js/3.6b4bc732.chunk.js.map",
     "index.html": "/reduce/index.html",
-    "static/js/2.421ba6ad.chunk.js.LICENSE.txt": "/reduce/static/js/2.421ba6ad.chunk.js.LICENSE.txt"
+    "static/js/2.3c517059.chunk.js.LICENSE.txt": "/reduce/static/js/2.3c517059.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b4be74b5.js",
-    "static/js/2.421ba6ad.chunk.js",
-    "static/js/main.001fb766.chunk.js"
+    "static/js/2.3c517059.chunk.js",
+    "static/js/main.63924772.chunk.js"
   ]
 }

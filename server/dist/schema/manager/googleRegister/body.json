@@ -1,0 +1,27 @@
+{
+    "title": "Google Register Body",
+    "type": "object",
+    "properties": {
+        "accessToken": {
+            "type": "string"
+        },
+        "joinedAt": {
+            "type": "string"
+        },
+        "profile": {
+            "type": "object",
+            "properties": {
+                "photoUrl": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "require": ["accessToken"]
+}

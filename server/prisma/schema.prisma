@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Location {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  parent   Location?  @relation(references: [id], fields: [parentId])
+  parentId Int?
+  children Location[] @relation("LocationToLocation")
+}
+
+model Manager {
+  id          String                  @id @default(uuid())
+  role        Role                    @default(MANAGER)
+  email       String                  @unique
+  name        String
+  socialMeta  SocialMeta?
+  isCertified Boolean                 @default(false)
+  joinedAt    DateTime                @default(now())
+  leavedAt    DateTime?
+  profile     ManagerExtendedProfile?
+}
+
+model ManagerExtendedProfile {
+  id        String  @id @default(uuid())
+  manager   Manager @relation(fields: [managerId], references: [id])
+  managerId String
+  photoUrl  String?
+  mobile    String
+  address   String?
+}
+
+model SocialMeta {
+  id        String  @id @default(uuid())
+  provider  String
+  socialId  String
+  manager   Manager @relation(fields: [managerId], references: [id])
+  managerId String
+
+  @@unique([provider, socialId])
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+}
+
+enum AccountAssortment {
+  INDIVIDUAL
+  COMPANY
+}
+
+model Account {
+  id         String                  @id @default(uuid())
+  assortment AccountAssortment       @default(COMPANY)
+  avatar     String
+  name       String
+  createdAt  DateTime                @default(now())
+  cart       String // 장바구니 (견적서같은거)
+  sale       String // 우리가 판매한 상품 또는 수리 등
+  purchase   String // 우리가 매입한 상품
+  profile    AccountExtendedProfile?
+}
+
+model AccountExtendedProfile {
+  id                  String           @id @default(uuid())
+  account             Account          @relation(fields: [accountId], references: [id])
+  accountId           String
+  address             String?
+  contact             AccountContact?
+  businessInformation Accountbusiness?
+}
+
+model AccountContact {
+  id        String                 @id @default(uuid())
+  office    String?
+  fax       String?
+  mobile    String?
+  profile   AccountExtendedProfile @relation(fields: [profileId], references: [id])
+  profileId String
+}
+
+model Accountbusiness {
+  id                         String                 @id @default(uuid())
+  businessRegistrationNumber String
+  representatives            String
+  businessAddress            String
+  businessType               String // 업태
+  businessItem               String // 종목
+  profile                    AccountExtendedProfile @relation(fields: [profileId], references: [id])
+  profileId                  String
+}

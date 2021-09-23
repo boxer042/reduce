@@ -25,10 +25,8 @@
     "fastify-cookie": "^5.3.1",
     "fastify-plugin": "^3.0.0",
     "fastify-sensible": "^3.1.0",
-    "global": "^4.4.0",
     "googleapis": "^87.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "pm2": "^5.1.1"
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@types/node": "^15.0.0",

@@ -10,7 +10,7 @@ const manager: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
    * GET /manager/official/me
    */
   fastify.get('/official/me', async function (request, reply) {
-    if (!request.manager) {
+    if (!request.user) {
       reply.status(401)
       const error = new Error('Unauthorized')
       error.name = 'UnauthorizedError'
@@ -19,7 +19,7 @@ const manager: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 
     const manager = await prisma.manager.findUnique({
       where: {
-        id: request.manager.id,
+        id: request.user.id,
       },
     })
     reply.send(manager)

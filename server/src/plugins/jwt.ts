@@ -2,13 +2,13 @@ import fp from 'fastify-plugin'
 import { decodeToken } from '../lib/jwt'
 
 export default fp(async (fastify, opts) => {
-  fastify.decorateRequest('manager', null)
+  fastify.decorateRequest('user', null)
   fastify.addHook('preHandler', async (request, reply) => {
     const accessToken: string | undefined = request.cookies.accessToken
     try {
-      const decoded = await decodeToken<ManagerTokenDecoded>(accessToken)
-      request.manager = {
-        id: decoded.managerId,
+      const decoded = await decodeToken<UserTokenDecoded>(accessToken)
+      request.user = {
+        id: decoded.userId,
       }
     } catch (error) {
       console.log(error)
@@ -18,13 +18,13 @@ export default fp(async (fastify, opts) => {
 
 declare module 'fastify' {
   interface FastifyRequest {
-    manager: null | { id: string }
+    user: null | { id: string }
   }
 }
 
-export type ManagerTokenDecoded = {
+export type UserTokenDecoded = {
   subject: string
-  managerId: string
+  userId: string
   iat: number
   exp: number
 }

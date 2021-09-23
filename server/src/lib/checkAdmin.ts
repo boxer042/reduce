@@ -7,14 +7,14 @@ export default async function checkAdmin(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
-  if (!request.manager) {
+  if (!request.user) {
     reply.status(401)
     throw new Error('unauthorized')
   }
 
   const manager = await prisma.manager.findUnique({
     where: {
-      id: request.manager.id,
+      id: request.user.id,
     },
   })
   if (!manager) {

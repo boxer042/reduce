@@ -9,7 +9,7 @@ const body_json_1 = __importDefault(require("../../schema/manager/googleRegister
 const prisma = new client_1.PrismaClient();
 const manager = async (fastify, opts) => {
     fastify.get('/official/me', async function (request, reply) {
-        if (!request.manager) {
+        if (!request.user) {
             reply.status(401);
             const error = new Error('Unauthorized');
             error.name = 'UnauthorizedError';
@@ -17,7 +17,7 @@ const manager = async (fastify, opts) => {
         }
         const manager = await prisma.manager.findUnique({
             where: {
-                id: request.manager.id,
+                id: request.user.id,
             },
         });
         reply.send(manager);

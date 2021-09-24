@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 async function checkAdmin(request, reply) {
-    if (!request.manager) {
+    if (!request.user) {
         reply.status(401);
         throw new Error('unauthorized');
     }
     const manager = await prisma.manager.findUnique({
         where: {
-            id: request.manager.id,
+            id: request.user.id,
         },
     });
     if (!manager) {

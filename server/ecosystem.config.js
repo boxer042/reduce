@@ -4,7 +4,7 @@ module.exports = {
       name: 'reduce-server', // 이름. 나중에 이 이름으로 프로세스를 관리한다
       // cwd: 'dist', // 앱이 실행될 디렉토리
       script: 'npm', // 실행할 파일 경로
-      args: 'start', // cli로 실행되는 인자
+      args: 'start:server', // cli로 실행되는 인자
       instances: 1, // 클러스터 모드 사용 시 생성할 인스턴스 수
       exec_mode: 'cluster', // fork, cluster 모드 중 선택
       merge_logs: true, // 클러스터 모드 사용 시 각 클러스터에서 생성되는 로그를 한 파일로 합쳐준다.

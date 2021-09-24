@@ -9,8 +9,10 @@ exports.default = fastify_plugin_1.default(async (fastify, opts) => {
     fastify.decorateRequest('user', null);
     fastify.addHook('preHandler', async (request, reply) => {
         const accessToken = request.cookies.accessToken;
+        console.log(request.cookies.accessToken);
         try {
             const decoded = await jwt_1.decodeToken(accessToken);
+            console.log(decoded.userId);
             request.user = {
                 id: decoded.userId,
             };

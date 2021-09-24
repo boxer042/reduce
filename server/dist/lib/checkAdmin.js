@@ -7,6 +7,7 @@ async function checkAdmin(request, reply) {
         reply.status(401);
         throw new Error('unauthorized');
     }
+    console.log(request.user);
     const manager = await prisma.manager.findUnique({
         where: {
             id: request.user.id,

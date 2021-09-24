@@ -73,7 +73,7 @@ const manager: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         const managerAccessToken = await generateToken(
           {
             suject: 'accessToken',
-            managerId: manager.id,
+            userId: manager.id,
           },
           {
             expiresIn: '15d',

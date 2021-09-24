@@ -2,7 +2,7 @@
 const exec = require('child_process').exec
 const path = require('path')
 
-const client = exec('npm run start', {
+const client = exec('npm run start:server', {
   windowsHide: true,
   cwd: path.join(__dirname, './'),
 })

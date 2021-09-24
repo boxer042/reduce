@@ -55,7 +55,7 @@ const manager = async (fastify, opts) => {
             }
             const managerAccessToken = await jwt_1.generateToken({
                 suject: 'accessToken',
-                managerId: manager.id,
+                userId: manager.id,
             }, {
                 expiresIn: '15d',
             });

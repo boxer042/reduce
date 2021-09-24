@@ -6,7 +6,7 @@ const client = axios.create({
 
 client.defaults.baseURL =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:8080'
-    : 'http://localhost:8080'
+    ? 'http://34.133.218.137:8080'
+    : 'http://34.133.218.137:8080'
 
 export default client

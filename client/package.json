@@ -55,5 +55,6 @@
     "gh-pages": "^3.2.3",
     "styled-components": "^5.3.1"
   },
-  "homepage": "https://boxer042.github.io/reduce/"
+  "homepage": "https://boxer042.github.io/reduce/",
+  "proxy": "http://34.133.218.137:8080"
 }

@@ -20,7 +20,11 @@ const app: FastifyPluginAsync<AppOptions> = async (
         return callback(null, true)
       }
       const host = origin.split('://')[1]
-      const allowedHost = ['localhost:3000']
+      const allowedHost = [
+        'localhost:3000',
+        'boxer042.github.io',
+        'boxer042.github.io/reduce',
+      ]
       const allowed = allowedHost.includes(host)
       callback(null, allowed)
     },

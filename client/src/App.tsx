@@ -11,8 +11,8 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Switch>
-        <AppLayout>
+      <AppLayout>
+        <Switch>
           <Route exact path="/">
             홈
           </Route>
@@ -28,8 +28,8 @@ function App() {
           <Route exact path="/sales">
             Sales
           </Route>
-        </AppLayout>
-      </Switch>
+        </Switch>
+      </AppLayout>
       <Navigation />
     </>
   )

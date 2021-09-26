@@ -13,7 +13,7 @@ function CreateIndividualForm({}: CreateIndividualFormProps) {
   return (
     <Form>
       <Input
-        label="Primary Input Design"
+        label="이름"
         value={name}
         setValue={setName}
         icon={<BiPackage />}
@@ -22,7 +22,7 @@ function CreateIndividualForm({}: CreateIndividualFormProps) {
         onChange={(e) => setName(e.target.value)}
       />
       <Input
-        label="Primary Input Design"
+        label="연락처"
         value={name}
         setValue={setName}
         icon={<BiPackage />}
@@ -30,49 +30,25 @@ function CreateIndividualForm({}: CreateIndividualFormProps) {
         placeholder="Primary Input Design"
         onChange={(e) => setName(e.target.value)}
       />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <Input
+        label="주소"
+        value={name}
+        setValue={setName}
+        icon={<BiPackage />}
+        error={error}
+        placeholder="Primary Input Design"
+        onChange={(e) => setName(e.target.value)}
+      />
       <MultiLocationSearch />
-      {/* <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br /> */}
+      <Input
+        label="주소"
+        value={name}
+        setValue={setName}
+        icon={<BiPackage />}
+        error={error}
+        placeholder="Primary Input Design"
+        onChange={(e) => setName(e.target.value)}
+      />
     </Form>
   )
 }
@@ -82,6 +58,6 @@ export default CreateIndividualForm
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  /* align-content: flex-start;
-  justify-content: flex-start; */
+  height: 100%;
+  padding: 0 16px;
 `

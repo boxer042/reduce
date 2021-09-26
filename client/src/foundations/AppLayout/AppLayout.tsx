@@ -18,7 +18,7 @@ export default AppLayout
 const Layout = styled.div`
   display: flex;
   height: 100%;
-  padding-bottom: 64px;
+  padding-bottom: 56px;
   justify-content: center;
 `
 const Main = styled.div`

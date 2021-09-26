@@ -81,7 +81,7 @@ function Workspaces({}: WorkspacesProps) {
         <Sub to="/workspaces/create/individual">
           <div className="label">Create Individual</div>
         </Sub>
-        <Sub to="">
+        <Sub to="" onClick={(e) => e.preventDefault()}>
           <div className="label">Create Company</div>
         </Sub>
       </Menu>
@@ -136,6 +136,8 @@ const Main = styled.div`
 `
 const Sub = styled(NavLink)`
   text-decoration: none;
+  height: 32px;
+  display: flex;
   color: ${openColor.gray[9]};
   &:hover {
     background: ${openColor.gray[2]};
@@ -145,6 +147,5 @@ const Sub = styled(NavLink)`
     height: 32px;
     font-size: 18px;
     padding-left: 56px;
-    cursor: pointer;
   }
 `

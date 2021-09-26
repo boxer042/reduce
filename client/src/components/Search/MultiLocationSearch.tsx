@@ -39,7 +39,7 @@ function MultiLocationSearch({}: MultiLocationSearchProps) {
     <MultiSelect
       selectedIndex={selectedIndex}
       setSelectedIndex={setSelectedIndex}
-      label="Multi Select Input"
+      label="사용지역"
       value={keyword}
       setValue={setKeyword}
       isSelected={isSelected}

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import openColor from './../../lib/openColor'
-import { BiStore, BiBrush } from 'react-icons/bi'
+import { BiStore, BiBrush, BiUser } from 'react-icons/bi'
 import { FcGoogle } from 'react-icons/fc'
+import SignInMadal from '../SignInModal/SignInMadal'
 
 /**
  * TODO
@@ -14,26 +15,44 @@ import { FcGoogle } from 'react-icons/fc'
 export type NavigationProps = {}
 
 function Navigation({}: NavigationProps) {
+  const [signInModalVisible, setSignInModalVisible] = useState(false)
+  const onClickLogin = () => {
+    setSignInModalVisible(true)
+  }
   return (
-    <Block>
-      <Nav>
-        <Item to="/workspaces">
-          <Icon>
-            <BiBrush />
-          </Icon>
-          <Label>Workspaces</Label>
-        </Item>
-        <Icon>
-          <FcGoogle />
-        </Icon>
-        <Item to="/sales">
-          <Icon>
-            <BiStore />
-          </Icon>
-          <Label>Sales</Label>
-        </Item>
-      </Nav>
-    </Block>
+    <>
+      <Block>
+        <Nav>
+          <Item to="/workspaces">
+            <Icon>
+              <BiBrush />
+            </Icon>
+            <Label>Workspaces</Label>
+          </Item>
+          <Item
+            to="/login"
+            onClick={(e) => {
+              e.preventDefault()
+              onClickLogin()
+            }}
+          >
+            <Icon>
+              <BiUser />
+            </Icon>
+            <Label>Sign In</Label>
+          </Item>
+          <Item to="/sales">
+            <Icon>
+              <BiStore />
+            </Icon>
+            <Label>Sales</Label>
+          </Item>
+        </Nav>
+      </Block>
+      {signInModalVisible && (
+        <SignInMadal onClose={() => setSignInModalVisible(false)} />
+      )}
+    </>
   )
 }
 
@@ -43,10 +62,11 @@ const Block = styled.div`
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 64px;
+  height: 56px;
   display: flex;
   justify-content: center;
   width: 100%;
+  z-index: 30;
 `
 const Nav = styled.div`
   max-width: 768px;
@@ -54,6 +74,7 @@ const Nav = styled.div`
   height: 100%;
   background: #fff;
   border-top: 1px solid ${openColor.gray[3]};
+  border-bottom: 1px solid ${openColor.gray[3]};
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -65,8 +86,11 @@ const Item = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100px;
+  height: 100%;
   color: ${openColor.gray[7]};
+
   &:hover,
   &.active {
     color: ${openColor.blue[9]};
@@ -74,7 +98,8 @@ const Item = styled(NavLink)`
 `
 
 const Icon = styled.div`
-  font-size: 28px;
+  font-size: 24px;
+  margin-bottom: -5px;
 `
 const Label = styled.div`
   font-size: 12px;

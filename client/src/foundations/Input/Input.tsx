@@ -32,7 +32,6 @@ function Input({
           placeholder={placeholder}
           autoComplete="off"
           onChange={onChange}
-          {...rest}
         />
         {value && (
           <ClearButton>
@@ -47,11 +46,13 @@ function Input({
 
 export default Input
 
-const InputBlock = styled.div``
+const InputBlock = styled.div`
+  margin: 8px 0;
+`
 
 const Label = styled.div`
   margin-bottom: 6px;
-  font-weight: bold;
+  font-size: 16px;
 `
 const InputWrapper = styled.div`
   display: flex;

@@ -1,14 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter basename="/">
-      <App />
-    </HashRouter>
+    <RecoilRoot>
+      <HashRouter basename="/">
+        <App />
+      </HashRouter>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 )

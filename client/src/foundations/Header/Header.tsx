@@ -32,6 +32,7 @@ const Block = styled.div`
   justify-content: center;
   padding: 0 16px;
   background: #fff;
+  /* box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.125); */
 `
 const Title = styled.h3``
 const Close = styled.div`

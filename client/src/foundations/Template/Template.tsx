@@ -24,8 +24,7 @@ const Block = styled.div`
 
 const Contents = styled.div<{ header?: React.ReactNode }>`
   height: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
+
   padding-top: ${(props) => (props.header ? '72px' : '16px')};
   overflow-y: auto;
 `

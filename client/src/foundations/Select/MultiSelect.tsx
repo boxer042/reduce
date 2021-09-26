@@ -184,11 +184,13 @@ function MultiSelect({
 
 export default MultiSelect
 
-const MultiSelectBlock = styled.div``
+const MultiSelectBlock = styled.div`
+  margin: 8px 0;
+  position: relative;
+`
 
 const Label = styled.div`
   margin-bottom: 6px;
-  font-weight: bold;
 `
 const InputWrapper = styled.div`
   display: flex;
@@ -226,6 +228,7 @@ const ClearButton = styled.div`
 const Error = styled.div``
 
 const ItemList = styled.div`
+  position: absolute;
   width: 100%;
   max-height: 172px;
   border-radius: 4px;

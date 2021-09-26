@@ -25,7 +25,7 @@ function CreateIndividual({}: CreateIndividualProps) {
   return (
     <Template header={<Header title="Create Individual Account" />}>
       <CreateIndividualForm />
-
+      {/* 
       {locations?.map((result) =>
         !result.parentId ? (
           <div key={result.id}>
@@ -43,7 +43,7 @@ function CreateIndividual({}: CreateIndividualProps) {
         ) : (
           ''
         )
-      )}
+      )} */}
     </Template>
   )
 }

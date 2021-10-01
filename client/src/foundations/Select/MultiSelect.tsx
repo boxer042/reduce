@@ -131,7 +131,7 @@ function MultiSelect({
       //한글만 입력가능 ㄱㄴ 포함
       return value.length * 16
     }
-    return value.length * 8
+    return value.length * 10
   }
 
   return (

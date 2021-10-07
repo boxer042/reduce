@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navigation from './components/Navigation/Navigation'
 import AppLayout from './foundations/AppLayout/AppLayout'
 import Locations from './pages/Settings/Locations'
+import Account from './pages/Workspaces/Account/Account'
 import CreateIndividual from './pages/Workspaces/CreateIndividual'
 import Workspaces from './pages/Workspaces/Workspaces'
 import GlobalStyles from './styles/GlobalStyles'
@@ -22,6 +23,9 @@ function App() {
           <Route exact path="/workspaces/create/individual">
             <CreateIndividual />
           </Route>
+          <Route exact path="/workspaces/account">
+            <Account />
+          </Route>
           <Route exact path="/settings/locations">
             <Locations />
           </Route>
@@ -29,8 +33,8 @@ function App() {
             Sales
           </Route>
         </Switch>
+        <Navigation />
       </AppLayout>
-      <Navigation />
     </>
   )
 }

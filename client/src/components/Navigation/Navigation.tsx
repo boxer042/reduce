@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import openColor from './../../lib/openColor'
 import { BiStore, BiBrush, BiUser } from 'react-icons/bi'
-import { FcGoogle } from 'react-icons/fc'
 import SignInMadal from '../SignInModal/SignInMadal'
 
 /**
@@ -16,9 +15,11 @@ export type NavigationProps = {}
 
 function Navigation({}: NavigationProps) {
   const [signInModalVisible, setSignInModalVisible] = useState(false)
+
   const onClickLogin = () => {
     setSignInModalVisible(true)
   }
+
   return (
     <>
       <Block>
@@ -49,9 +50,10 @@ function Navigation({}: NavigationProps) {
           </Item>
         </Nav>
       </Block>
-      {signInModalVisible && (
-        <SignInMadal onClose={() => setSignInModalVisible(false)} />
-      )}
+      <SignInMadal
+        visible={signInModalVisible}
+        onClose={() => setSignInModalVisible(false)}
+      />
     </>
   )
 }

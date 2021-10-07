@@ -1,19 +1,33 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useEffect, useState } from 'react'
+import styled, { css } from 'styled-components'
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton'
 import { BiX } from 'react-icons/bi'
-import openColor from './../../lib/openColor'
+import transitions from './../../lib/transitions/transitions'
 
 export type SignInMadalProps = {
   onClose(): void
+  visible: boolean
 }
 
-function SignInMadal({ onClose }: SignInMadalProps) {
+function SignInMadal({ onClose, visible }: SignInMadalProps) {
+  const [animate, setAnimate] = useState(false)
+  const [localVisible, setLocalVisible] = useState(visible)
+
+  useEffect(() => {
+    // visible 값이 true -> false 가 되는 것을 감지
+    if (localVisible && !visible) {
+      setAnimate(true)
+      setTimeout(() => setAnimate(false), 250)
+    }
+    setLocalVisible(visible)
+  }, [localVisible, visible])
+
+  if (!animate && !localVisible) return null
   return (
     <>
       <Overlay />
       <CenterBlock>
-        <WhiteBox>
+        <WhiteBox visible={visible}>
           <Close onClick={onClose}>
             <BiX />
           </Close>
@@ -31,9 +45,10 @@ export default SignInMadal
 
 const Overlay = styled.div`
   position: fixed;
-  left: 0;
+  left: 100vw - 768px;
   top: 0;
-  width: 100%;
+  max-width: 768px;
+  width: 100vw;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
@@ -44,17 +59,19 @@ const CenterBlock = styled.div`
   height: 100%;
   left: 0;
   top: 0;
-  align-items: center;
   justify-content: center;
+  align-items: flex-end;
   display: flex;
-  z-index: 20;
+  z-index: 40;
 `
-const WhiteBox = styled.div`
+const WhiteBox = styled.div<{ visible: boolean }>`
   position: relative;
-  width: 380px;
-  max-width: calc(100vw - 16px);
-  background: white;
-  border-radius: 16px;
+  max-width: 768px;
+  width: 100vw;
+  min-height: 40%;
+  background: #fff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   box-shadow: 0px 1rem 1rem rgba(67, 67, 67, 0.03);
   display: flex;
   flex-direction: column;
@@ -63,10 +80,17 @@ const WhiteBox = styled.div`
   .button-block {
     width: 256px;
   }
+
   h3 {
     font-size: 24px;
     text-align: center;
   }
+  animation: ${transitions.slideUp} 0.3s forwards ease-out;
+  ${(props) =>
+    props.visible === false &&
+    css`
+      animation: ${transitions.slideDown} 0.2s forwards ease-out;
+    `}
 `
 const Close = styled.div`
   position: absolute;

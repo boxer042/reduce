@@ -75,8 +75,8 @@ function Workspaces({}: WorkspacesProps) {
           </div>
           <div className="label">Account</div>
         </Main>
-        <Sub to="">
-          <div className="label">Account List</div>
+        <Sub to="/workspaces/account">
+          <div className="label">Account</div>
         </Sub>
         <Sub to="/workspaces/create/individual">
           <div className="label">Create Individual</div>

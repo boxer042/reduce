@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import openColor from './../../lib/openColor'
 import { BiStore, BiBrush, BiUser } from 'react-icons/bi'
 import SignInMadal from '../SignInModal/SignInMadal'
-
+import Modal from '../../foundations/Modal/Modal'
+import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton'
 /**
  * TODO
  * 1. 구글 로그인 버튼, 구글 로그인시 유저 현재 정보 담은 아이콘 나오기
@@ -50,10 +51,26 @@ function Navigation({}: NavigationProps) {
           </Item>
         </Nav>
       </Block>
-      <SignInMadal
+      <Modal
+        visible={signInModalVisible}
+        zIndex={40}
+        onClose={() => setSignInModalVisible(false)}
+      >
+        <LoginBlock>
+          <h3>Hello, Manager</h3>
+          <div
+            className="button-block"
+            onClick={() => setSignInModalVisible(false)}
+          >
+            <GoogleLoginButton />
+          </div>
+        </LoginBlock>
+      </Modal>
+
+      {/* <SignInMadal
         visible={signInModalVisible}
         onClose={() => setSignInModalVisible(false)}
-      />
+      /> */}
     </>
   )
 }
@@ -105,4 +122,18 @@ const Icon = styled.div`
 `
 const Label = styled.div`
   font-size: 12px;
+`
+
+const LoginBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  h3 {
+    font-size: 24px;
+    text-align: center;
+  }
+  .button-block {
+    width: 100%;
+  }
 `

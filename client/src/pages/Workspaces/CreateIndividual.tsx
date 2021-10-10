@@ -23,7 +23,7 @@ function CreateIndividual({}: CreateIndividualProps) {
   }, [])
 
   return (
-    <Template header={<Header title="Create Individual Account" />}>
+    <Template header={<Header title="Create Individual AccountPage" />}>
       <CreateIndividualForm />
       {/* 
       {locations?.map((result) =>

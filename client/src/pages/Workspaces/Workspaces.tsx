@@ -73,10 +73,10 @@ function Workspaces({}: WorkspacesProps) {
           <div className="icon">
             <BiUser />
           </div>
-          <div className="label">Account</div>
+          <div className="label">AccountPage</div>
         </Main>
-        <Sub to="/workspaces/account">
-          <div className="label">Account</div>
+        <Sub to="/workspaces/AccountPage">
+          <div className="label">AccountPage</div>
         </Sub>
         <Sub to="/workspaces/create/individual">
           <div className="label">Create Individual</div>

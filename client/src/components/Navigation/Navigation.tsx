@@ -6,6 +6,8 @@ import { BiStore, BiBrush, BiUser } from 'react-icons/bi'
 import SignInMadal from '../SignInModal/SignInMadal'
 import Modal from '../../foundations/Modal/Modal'
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton'
+import useModal from '../../hooks/useModal'
+import { useLocation } from 'react-router-dom'
 /**
  * TODO
  * 1. 구글 로그인 버튼, 구글 로그인시 유저 현재 정보 담은 아이콘 나오기
@@ -15,10 +17,10 @@ import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton'
 export type NavigationProps = {}
 
 function Navigation({}: NavigationProps) {
-  const [signInModalVisible, setSignInModalVisible] = useState(false)
-
+  const { isOpenModal, setIsOpenModal, onClose } = useModal()
+  const location = useLocation()
   const onClickLogin = () => {
-    setSignInModalVisible(true)
+    setIsOpenModal(true)
   }
 
   return (
@@ -43,7 +45,12 @@ function Navigation({}: NavigationProps) {
             </Icon>
             <Label>Sign In</Label>
           </Item>
-          <Item to="/sales">
+          <Item
+            to={{
+              pathname: '/login', //`${location.pathname}/login`
+              state: { background: location },
+            }}
+          >
             <Icon>
               <BiStore />
             </Icon>
@@ -51,17 +58,10 @@ function Navigation({}: NavigationProps) {
           </Item>
         </Nav>
       </Block>
-      <Modal
-        visible={signInModalVisible}
-        zIndex={40}
-        onClose={() => setSignInModalVisible(false)}
-      >
+      <Modal visible={isOpenModal} zIndex={40} onClose={onClose}>
         <LoginBlock>
           <h3>Hello, Manager</h3>
-          <div
-            className="button-block"
-            onClick={() => setSignInModalVisible(false)}
-          >
+          <div className="button-block" onClick={onClose}>
             <GoogleLoginButton />
           </div>
         </LoginBlock>
@@ -92,8 +92,8 @@ const Nav = styled.div`
   width: 100%;
   height: 100%;
   background: #fff;
-  border-top: 1px solid ${openColor.gray[3]};
-  border-bottom: 1px solid ${openColor.gray[3]};
+  border-top: 1px solid ${openColor.gray[2]};
+  border-bottom: 1px solid ${openColor.gray[2]};
   display: flex;
   align-items: center;
   justify-content: space-around;

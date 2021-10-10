@@ -1,40 +1,29 @@
-import React, { useCallback, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
+import { fade, slide } from '../../lib/transitions/transitionGroup'
 import styled from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
-import { fade, slide } from '../../lib/transitions/transitionGroup'
-import { BiX } from 'react-icons/bi'
-import useOnClickOutside from 'use-onclickoutside'
 import { useHistory } from 'react-router'
+import { BiX } from 'react-icons/bi'
 
-export type ModalProps = {
+export type RouteModalProps = {
   children: React.ReactNode
-  visible: boolean
-  onClose(): void
+  onClose?(e: any): void
   zIndex?: number
 }
 
-function Modal({ children, visible, onClose, zIndex = 20 }: ModalProps) {
-  const overlayRef = useRef(null)
-  const bottomSheetRef = useRef(null)
-  const [onBackButton, setOnBackButton] = useState(false)
+function RouteModal({ children, onClose, zIndex = 40 }: RouteModalProps) {
+  const [visible, setVisible] = useState(false)
+  const overlayRef = React.useRef(null)
+  const bottomSheetRef = React.useRef(null)
   const history = useHistory()
 
-  const handleOnBackButtonClose = useCallback(() => {
-    setOnBackButton(true)
-    onClose()
-  }, [onClose])
-
-  const handleOnEntered = useCallback(() => {
-    window.history.pushState(null, '', window.location.href)
-    window.addEventListener('popstate', handleOnBackButtonClose)
-    setOnBackButton(false)
-    return () => {
-      window.removeEventListener('popstate', handleOnBackButtonClose)
-    }
+  useEffect(() => {
+    setVisible(true)
   }, [])
 
-  useOnClickOutside(bottomSheetRef, onClose)
-
+  const handleClose = (e: any) => {
+    setVisible(false)
+  }
   return (
     <>
       <CSSTransition
@@ -43,12 +32,7 @@ function Modal({ children, visible, onClose, zIndex = 20 }: ModalProps) {
         timeout={{ enter: 250, exit: 200 }}
         unmountOnExit
         classNames="fade"
-        onEntered={handleOnEntered}
-        onExited={() => {
-          if (!onBackButton) {
-            history.goBack()
-          }
-        }}
+        onExited={() => history.goBack()}
       >
         <Overlay ref={overlayRef} />
       </CSSTransition>
@@ -60,7 +44,7 @@ function Modal({ children, visible, onClose, zIndex = 20 }: ModalProps) {
         classNames="bottom"
       >
         <BottomSheet zIndex={zIndex} ref={bottomSheetRef}>
-          <Close onClick={onClose}>
+          <Close onClick={handleClose}>
             <BiX />
           </Close>
           {children}
@@ -70,7 +54,7 @@ function Modal({ children, visible, onClose, zIndex = 20 }: ModalProps) {
   )
 }
 
-export default Modal
+export default RouteModal
 
 const Overlay = styled.div`
   position: fixed;

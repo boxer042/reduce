@@ -26,7 +26,7 @@ const Block = styled.div`
   position: fixed;
   max-width: 768px;
   width: 100%;
-  height: 56px;
+  max-height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +34,9 @@ const Block = styled.div`
   background: #fff;
   /* box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.125); */
 `
-const Title = styled.h3``
+const Title = styled.h3`
+  font-size: 24px;
+`
 const Close = styled.div`
   position: absolute;
   cursor: pointer;

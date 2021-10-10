@@ -1,19 +1,29 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
 import Navigation from './components/Navigation/Navigation'
 import AppLayout from './foundations/AppLayout/AppLayout'
+import Modal from './foundations/Modal/Modal'
+import LoginPage from './pages/Lab/LoginPage'
 import Locations from './pages/Settings/Locations'
-import Account from './pages/Workspaces/Account/Account'
+import AccountPage from './pages/Workspaces/Account/AccountPage'
 import CreateIndividual from './pages/Workspaces/CreateIndividual'
 import Workspaces from './pages/Workspaces/Workspaces'
 import GlobalStyles from './styles/GlobalStyles'
+import { isMobile } from 'react-device-detect'
 
 function App() {
+  const location = useLocation<any>()
+  const background = location.state && location.state.background
+  // if (isMobile) {
+  //   // 디바이스를 알고새롭게 리드렉트해줌
+  //   window.location.href = 'https://google.com'
+  //   return <div>리드렉트</div>
+  // }
   return (
     <>
       <GlobalStyles />
       <AppLayout>
-        <Switch>
+        <Switch location={background || location}>
           <Route exact path="/">
             홈
           </Route>
@@ -23,8 +33,8 @@ function App() {
           <Route exact path="/workspaces/create/individual">
             <CreateIndividual />
           </Route>
-          <Route exact path="/workspaces/account">
-            <Account />
+          <Route exact path="/workspaces/AccountPage">
+            <AccountPage />
           </Route>
           <Route exact path="/settings/locations">
             <Locations />
@@ -33,6 +43,12 @@ function App() {
             Sales
           </Route>
         </Switch>
+        {background && (
+          // 만약 라우트로 모달을 띄우면 새로고침시 갈수 있는 라우트를 새로 만들어줘야 한다.
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+        )}
         <Navigation />
       </AppLayout>
     </>

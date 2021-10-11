@@ -2,19 +2,24 @@ import { BiSearch } from 'react-icons/bi'
 import styled from 'styled-components'
 import openColor from './../../lib/openColor'
 
-export type AccountSearchSectionProps = {}
+export type AccountSearchSectionProps = {
+  value: string
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void
+}
 
-function AccountSearchSection({}: AccountSearchSectionProps) {
+function AccountSearchSection({ value, onChange }: AccountSearchSectionProps) {
   return (
     <Container>
       <SearchInputBlock>
-        <input placeholder="이름 또는 연락처 검색" />
+        <input
+          value={value}
+          onChange={onChange}
+          placeholder="이름 또는 연락처 검색"
+        />
         <SearchButton>
           <BiSearch />
         </SearchButton>
       </SearchInputBlock>
-      <CreateBlock>+ "이재우" 추가하기</CreateBlock>
-      <FilterBlock>전체 개인 회사 거래처</FilterBlock>
     </Container>
   )
 }
@@ -24,10 +29,8 @@ export default AccountSearchSection
 const Container = styled.div`
   max-width: 768px;
   width: 100%;
-  border-bottom: 1px solid ${openColor.gray[2]};
+
   padding: 0 16px 16px 16px;
-  position: fixed;
-  top: 56px;
   background-color: #fff;
 `
 

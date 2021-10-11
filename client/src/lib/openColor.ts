@@ -61,12 +61,57 @@ const blue = {
   '8': '#1971c2',
   '9': '#1864ab',
 }
+
+const violet = {}
+const indigo = {
+  '0': '#edf2ff',
+  '1': '#dbe4ff',
+  '2': '#bac8ff',
+  '3': '#91a7ff',
+  '4': '#748ffc',
+  '5': '#5c7cfa',
+  '6': '#4c6ef6',
+  '7': '#4263eb',
+  '8': '#3b5bdb',
+  '9': '#364fc7',
+}
+const cyan = {}
+const teal = {
+  '0': '#e6fcf6',
+  '1': '#c3fae8',
+  '2': '#96f2d7',
+  '3': '#63e6be',
+  '4': '#38d9a9',
+  '5': '#20c997',
+  '6': '#12b886',
+  '7': '#0ca678',
+  '8': '#099268',
+  '9': '#087f5b',
+}
+const yellow = {
+  '0': '#fff9db',
+  '1': '#fff3bf',
+  '2': '#ffec99',
+  '3': '#ffe066',
+  '4': '#ffd43b',
+  '5': '#fcc419',
+  '6': '#fab005',
+  '7': '#f59f00',
+  '8': '#f08c00',
+  '9': '#e67700',
+}
+
 const openColor = {
   gray,
   red,
   pink,
   grape,
   blue,
+  violet,
+  indigo,
+  cyan,
+  teal,
+  yellow,
 }
 
 export default openColor

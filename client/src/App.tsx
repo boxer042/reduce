@@ -1,15 +1,14 @@
 import React from 'react'
-import { Route, Switch, useLocation, useHistory } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import Navigation from './components/Navigation/Navigation'
 import AppLayout from './foundations/AppLayout/AppLayout'
-import Modal from './foundations/Modal/Modal'
 import LoginPage from './pages/Lab/LoginPage'
 import Locations from './pages/Settings/Locations'
+import AccountCreatePage from './pages/Workspaces/Account/AccountCreatePage'
 import AccountPage from './pages/Workspaces/Account/AccountPage'
 import CreateIndividual from './pages/Workspaces/CreateIndividual'
 import Workspaces from './pages/Workspaces/Workspaces'
 import GlobalStyles from './styles/GlobalStyles'
-import { isMobile } from 'react-device-detect'
 
 function App() {
   const location = useLocation<any>()
@@ -35,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/workspaces/AccountPage">
             <AccountPage />
+          </Route>
+          <Route exact path="/workspaces/account/create">
+            <AccountCreatePage />
           </Route>
           <Route exact path="/settings/locations">
             <Locations />
